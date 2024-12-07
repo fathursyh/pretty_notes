@@ -15,10 +15,10 @@ void main() async {
   // SettingsController for changes, then passes it further down to the
   // SettingsView.
 
-  runApp(const MaterialApp(
-    home: GetMaterialApp(
+  runApp(
+    const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: SplashScreen(),
     ),
-  ));
+  );
 }
