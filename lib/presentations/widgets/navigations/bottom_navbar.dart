@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pretty_notes/src/controller/app_controller.dart';
+import 'package:pretty_notes/src/controllers/app_controller.dart';
 import 'package:get/get.dart';
 
 class BottomAppCustom extends StatefulWidget {
@@ -22,7 +22,7 @@ class _BottomNavigationBarExampleState extends State<BottomAppCustom> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(bottom: 10, left: 4, right: 4),
+      padding: const EdgeInsets.only(bottom: 10, left: 6, right: 6),
       decoration: BoxDecoration(boxShadow: [
         BoxShadow(
           color: Colors.grey.withOpacity(0.5),
@@ -32,7 +32,7 @@ class _BottomNavigationBarExampleState extends State<BottomAppCustom> {
         )
       ]),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(10),
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.black87,
@@ -46,8 +46,8 @@ class _BottomNavigationBarExampleState extends State<BottomAppCustom> {
               label: 'Search',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.school),
-              label: 'School',
+              icon: Icon(Icons.book),
+              label: 'Tasks',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),

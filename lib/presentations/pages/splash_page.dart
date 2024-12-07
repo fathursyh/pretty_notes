@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pretty_notes/presentations/pages/home_page.dart';
+import 'package:pretty_notes/presentations/layouts/main_layout.dart';
 import 'package:get/get.dart';
 import 'dart:async';
 
@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     Future.delayed(
       const Duration(seconds: 4),
-      () => Get.off(() => const HomePage(), transition: Transition.fade),
+      () => Get.off(() => const MainLayout(), transition: Transition.fade),
     );
     return Scaffold(
       backgroundColor: CustomColors.primary,
