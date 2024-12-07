@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pretty_notes/presentations/pages/splash_page.dart';
 
 void main() async {
   // Set up the SettingsController, which will glue user settings to multiple
@@ -16,7 +17,8 @@ void main() async {
 
   runApp(const MaterialApp(
     home: GetMaterialApp(
-      home: Scaffold(),
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
     ),
   ));
 }
