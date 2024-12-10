@@ -4,6 +4,7 @@ import 'package:pretty_notes/presentations/pages/home_page.dart';
 import 'package:pretty_notes/presentations/pages/profile_page.dart';
 import 'package:pretty_notes/presentations/pages/search_page.dart';
 import 'package:pretty_notes/presentations/pages/task_page.dart';
+import 'package:pretty_notes/presentations/widgets/custom/text_appbar.dart';
 import 'package:pretty_notes/presentations/widgets/navigations/bottom_navbar.dart';
 import 'package:pretty_notes/src/controllers/app_controller.dart';
 import 'package:get/get.dart';
@@ -37,12 +38,7 @@ class MainLayout extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: CustomColors.primary,
-        title: Center(
-          child: Text(
-            'Pretty Notes',
-            style: GoogleFonts.lobsterTwo(fontWeight: FontWeight.bold),
-          ),
-        ),
+        title: const Center(child: TextAppbar('Pretty Notes')),
       ),
       body: Obx(
         () => currentPage(state.navigator),

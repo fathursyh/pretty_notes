@@ -35,7 +35,6 @@ class LoginPage extends StatelessWidget {
               () => TextFormField(
                 focusNode: _focusNode,
                 controller: emailController,
-                autofocus: true,
                 decoration: InputDecoration(
                     labelText: 'Email',
                     errorText: _authController.isValidEmail.value
