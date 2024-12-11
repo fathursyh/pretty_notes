@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pretty_notes/presentations/layouts/main_layout.dart';
 import 'package:get/get.dart';
+import 'package:pretty_notes/presentations/pages/landing_page.dart';
 import 'dart:async';
 
 import 'package:pretty_notes/src/setting/custom_colors.dart';
@@ -19,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     Future.delayed(
       const Duration(seconds: 4),
-      () => Get.off(() => const MainLayout(), transition: Transition.fade),
+      () => Get.off(() => const LandingPage(), transition: Transition.fade),
     );
     return Scaffold(
       backgroundColor: CustomColors.primary,
@@ -27,10 +28,11 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset('flutter_logo.png'), // Replace with your logo path
+            Image.asset(
+                'assets/flutter_logo.png'), // Replace with your logo path
             const SizedBox(height: 20),
             Text(
-              'Pretty Notes',
+              'Notes Kami',
               style: GoogleFonts.lobsterTwo(
                   fontWeight: FontWeight.bold, fontSize: 38),
             ),

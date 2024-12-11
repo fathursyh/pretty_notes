@@ -1,79 +1,52 @@
 import 'package:flutter/material.dart';
-import 'package:pretty_notes/src/controllers/login_controller.dart';
-import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:pretty_notes/presentations/widgets/custom/text_appbar.dart';
+import 'package:pretty_notes/presentations/widgets/forms/login_form.dart';
 import 'package:pretty_notes/src/setting/custom_colors.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({super.key}) {
-    initFocusEvent();
-  }
-  final LoginController _authController = Get.put(LoginController());
-  final FocusNode _focusNode = FocusNode();
-  initFocusEvent() {
-    _focusNode.addListener(() {
-      if (!_focusNode.hasFocus) {
-        _authController.validateEmail();
-      }
-    });
-  }
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final emailController = TextEditingController();
-    final passwordController = TextEditingController();
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        title: const Text('Login'),
         backgroundColor: CustomColors.primary,
+        centerTitle: true,
+        title: const TextAppbar('Login'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Obx(
-              () => TextFormField(
-                focusNode: _focusNode,
-                controller: emailController,
-                decoration: InputDecoration(
-                    labelText: 'Email',
-                    errorText: _authController.isValidEmail.value
-                        ? null
-                        : 'Enter a valid email.'),
-                onTap: () => _authController.validEmail = true,
-                onChanged: (value) {
-                  _authController.email = value;
-                },
-              ),
+      body: Flex(
+        direction: Axis.vertical,
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          SizedBox(
+            height: 80,
+            child: Wrap(
+              direction: Axis.vertical,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 4,
+              children: [
+                Text(
+                  'We say hello, people!',
+                  style: GoogleFonts.lexendDeca(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 22,
+                  ),
+                ),
+                Text(
+                  'Create an account to start using our app.',
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: Colors.black87,
+                  ),
+                ),
+              ],
             ),
-            Obx(
-              () => TextFormField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                    labelText: 'Password',
-                    errorText: _authController.isValidPassword.value
-                        ? null
-                        : 'Password must be at least 8 characters.'),
-                onTap: () => _authController.validPassword = true,
-                onChanged: (value) {
-                  _authController.password = value;
-                },
-              ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                if (_authController.validateLogin()) {
-                  print('login');
-                } else {
-                  print('not login');
-                }
-              },
-              child: const Text('Login'),
-            ),
-          ],
-        ),
+          ),
+          const LoginForm(),
+        ],
       ),
     );
   }

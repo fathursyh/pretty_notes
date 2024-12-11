@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pretty_notes/presentations/pages/login_page.dart';
+import 'package:pretty_notes/presentations/layouts/main_layout.dart';
+import 'package:pretty_notes/presentations/pages/register_page.dart';
 import 'package:pretty_notes/src/setting/custom_colors.dart';
 
-class RegisterForm extends StatefulWidget {
-  const RegisterForm({super.key});
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
 
   @override
-  State<RegisterForm> createState() => _RegisterFormState();
+  State<LoginForm> createState() => _LoginFormState();
 }
 
-class _RegisterFormState extends State<RegisterForm> {
+class _LoginFormState extends State<LoginForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -35,41 +36,15 @@ class _RegisterFormState extends State<RegisterForm> {
               },
             ),
             TextFormField(
+              obscureText: true,
+              obscuringCharacter: "*",
               autovalidateMode: AutovalidateMode.onUserInteraction,
               decoration: const InputDecoration(
-                  label: Text('Full name'),
+                  label: Text('Password'),
                   hintStyle: TextStyle(color: Colors.black38)),
               validator: (String? value) {
                 if (value == null || value.isEmpty) {
                   return 'Name is required.';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              obscureText: true,
-              obscuringCharacter: "*",
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              decoration: const InputDecoration(
-                label: Text('Password'),
-              ),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Password is required.';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              obscureText: true,
-              obscuringCharacter: "*",
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              decoration: const InputDecoration(
-                label: Text('Confirm password'),
-              ),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Confirm password is empty.';
                 }
                 return null;
               },
@@ -91,10 +66,11 @@ class _RegisterFormState extends State<RegisterForm> {
                       if (_formKey.currentState!.validate()) {
                         _formKey.currentState!.save();
                         // Process data.
+                        Get.offAll(const MainLayout());
                       }
                     },
                     child: Text(
-                      'Register',
+                      'Login',
                       style: GoogleFonts.poppins(
                           color: Colors.black,
                           fontSize: 16,
@@ -113,21 +89,22 @@ class _RegisterFormState extends State<RegisterForm> {
                       spacing: -8,
                       children: [
                         const Text(
-                          "Have an account?",
+                          "Doesn't have an account?",
                         ),
                         TextButton(
                           onPressed: () {
                             Get.off(
-                              transition: Transition.leftToRight,
-                              const LoginPage(),
+                              transition: Transition.rightToLeft,
+                              const RegisterPage(),
                             );
                           },
                           child: const Text(
-                            'Login',
+                            'Register',
                             style: TextStyle(
-                                color: Colors.blue,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 0.5),
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 0.5,
+                            ),
                           ),
                         ),
                       ],

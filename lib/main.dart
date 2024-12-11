@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pretty_notes/presentations/pages/landing_page.dart';
+import 'package:pretty_notes/presentations/pages/login_page.dart';
 import 'package:pretty_notes/presentations/pages/register_page.dart';
 import 'package:pretty_notes/presentations/pages/splash_page.dart';
 
@@ -19,7 +21,7 @@ void main() async {
   runApp(
     const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: RegisterPage(),
+      home: SplashScreen(),
     ),
   );
 }
