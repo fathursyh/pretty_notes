@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1097236270475",
+    "project_id": "pretty-notes-f6928",
+    "storage_bucket": "pretty-notes-f6928.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097236270475:android:244ac3539447dfbbe2b38e",
+        "android_client_info": {
+          "package_name": "com.example.pretty_notes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf06b5R0fUGqjNkPoV_UgO9HUjHsl4l0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

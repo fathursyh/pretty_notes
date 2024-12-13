@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:pretty_notes/presentations/pages/landing_page.dart';
 import 'package:pretty_notes/presentations/pages/login_page.dart';
 import 'package:pretty_notes/presentations/pages/register_page.dart';
@@ -17,6 +19,10 @@ void main() async {
   // Run the app and pass in the SettingsController. The app listens to the
   // SettingsController for changes, then passes it further down to the
   // SettingsView.
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(
     const GetMaterialApp(
