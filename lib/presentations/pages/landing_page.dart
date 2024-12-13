@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pretty_notes/presentations/pages/login_page.dart';
+import 'package:pretty_notes/src/models/firebase_realtime.dart';
 import 'package:pretty_notes/src/setting/custom_colors.dart';
 
 class LandingPage extends StatelessWidget {
@@ -36,8 +37,9 @@ class LandingPage extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             ElevatedButton(
-              onPressed: () {
-                Get.to(LoginPage(), transition: Transition.downToUp);
+              onPressed: () async {
+                Get.to(() => const LoginPage(),
+                    transition: Transition.downToUp);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromRGBO(0, 0, 0, 1),

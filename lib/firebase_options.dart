@@ -54,6 +54,8 @@ class DefaultFirebaseOptions {
     appId: '1:1097236270475:web:b24ee50fb45c81f5e2b38e',
     messagingSenderId: '1097236270475',
     projectId: 'pretty-notes-f6928',
+    databaseURL:
+        "https://pretty-notes-f6928-default-rtdb.asia-southeast1.firebasedatabase.app",
     authDomain: 'pretty-notes-f6928.firebaseapp.com',
     storageBucket: 'pretty-notes-f6928.firebasestorage.app',
   );
@@ -63,7 +65,8 @@ class DefaultFirebaseOptions {
     appId: '1:1097236270475:android:244ac3539447dfbbe2b38e',
     messagingSenderId: '1097236270475',
     projectId: 'pretty-notes-f6928',
+    databaseURL:
+        "https://pretty-notes-f6928-default-rtdb.asia-southeast1.firebasedatabase.app",
     storageBucket: 'pretty-notes-f6928.firebasestorage.app',
   );
-
 }
