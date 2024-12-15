@@ -9,11 +9,17 @@ class UserModel {
         email: emailAddress,
         password: password,
       );
-      print(credential.user);
+      // print(credential.user);
       return credential.user != null;
     } on FirebaseAuthException catch (e) {
-      print(e);
+      // print(e);
+      e.message;
       return false;
     }
+  }
+
+  // logout
+  void logoutUser() async {
+    await FirebaseAuth.instance.signOut();
   }
 }

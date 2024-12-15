@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pretty_notes/presentations/pages/login_page.dart';
-import 'package:pretty_notes/src/models/firebase_realtime.dart';
 import 'package:pretty_notes/src/setting/custom_colors.dart';
 
 class LandingPage extends StatelessWidget {

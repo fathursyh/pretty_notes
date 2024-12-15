@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pretty_notes/presentations/widgets/custom/text_appbar.dart';
 import 'package:pretty_notes/presentations/widgets/forms/register_form.dart';
+import 'package:pretty_notes/src/controllers/auth_controller.dart';
 import 'package:pretty_notes/src/setting/custom_colors.dart';
 
 class RegisterPage extends StatelessWidget {
