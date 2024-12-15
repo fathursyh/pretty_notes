@@ -93,10 +93,7 @@ class _LoginFormState extends State<LoginForm> {
                         ),
                         TextButton(
                           onPressed: () {
-                            Get.off(
-                              () => const RegisterPage(),
-                              transition: Transition.rightToLeft,
-                            );
+                            Get.offNamed('/register');
                           },
                           child: const Text(
                             'Register',

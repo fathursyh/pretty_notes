@@ -37,8 +37,7 @@ class LandingPage extends StatelessWidget {
             const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () async {
-                Get.to(() => const LoginPage(),
-                    transition: Transition.downToUp);
+                Get.toNamed('/login');
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color.fromRGBO(0, 0, 0, 1),

@@ -1,6 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class UserModel {
+  // check user status
+  Future<bool> checkUser() async {
+    bool status = false;
+    FirebaseAuth.instance.userChanges().listen((User? user) {
+      if (user == null) {
+        status = false;
+      } else {
+        status = true;
+      }
+    });
+    return status;
+  }
+
   // Register
   Future<bool> createUser(String emailAddress, String password) async {
     try {

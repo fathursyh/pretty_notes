@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pretty_notes/presentations/layouts/main_layout.dart';
 import 'package:get/get.dart';
-import 'package:pretty_notes/presentations/pages/landing_page.dart';
 import 'dart:async';
 
 import 'package:pretty_notes/src/setting/custom_colors.dart';
@@ -20,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     Future.delayed(
       const Duration(seconds: 4),
-      () => Get.off(() => const LandingPage(), transition: Transition.fade),
+      () => Get.offNamed('/landing'),
     );
     return Scaffold(
       backgroundColor: CustomColors.primary,

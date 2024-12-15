@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:pretty_notes/presentations/pages/register_page.dart';
 import 'package:pretty_notes/src/controllers/auth_controller.dart';
+import 'package:pretty_notes/src/setting/page_names.dart';
 import 'src/setting/firebase_options.dart';
-// import 'package:pretty_notes/presentations/pages/landing_page.dart';
-// import 'package:pretty_notes/presentations/pages/login_page.dart';
-// import 'package:pretty_notes/presentations/pages/register_page.dart';
-import 'package:pretty_notes/presentations/pages/splash_page.dart';
 
 void main() async {
   // Set up the SettingsController, which will glue user settings to multiple
@@ -27,9 +23,10 @@ void main() async {
   );
 
   runApp(
-    const GetMaterialApp(
+    GetMaterialApp(
+      initialRoute: '/splash',
+      getPages: pages,
       debugShowCheckedModeBanner: false,
-      home: RegisterPage(),
     ),
   );
 }

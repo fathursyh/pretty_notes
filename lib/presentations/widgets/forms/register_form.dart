@@ -70,10 +70,12 @@ class _RegisterFormState extends State<RegisterForm> {
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
                     return 'Password is required.';
+                  } else if (value.length < 8) {
+                    return 'Password must be at least 8 characters';
                   }
                   return null;
                 },
-                onSaved: (newValue) => _registerUser['password'] = newValue,
+                onChanged: (value) => _registerUser['password'] = value,
               ),
               TextFormField(
                 obscureText: true,
@@ -85,6 +87,8 @@ class _RegisterFormState extends State<RegisterForm> {
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
                     return 'Confirm password is empty.';
+                  } else if (value != _registerUser['password']) {
+                    return 'Confirm password is not match.';
                   }
                   return null;
                 },
@@ -148,10 +152,7 @@ class _RegisterFormState extends State<RegisterForm> {
                           ),
                           TextButton(
                             onPressed: () {
-                              Get.off(
-                                transition: Transition.leftToRight,
-                                const LoginPage(),
-                              );
+                              Get.offNamed('/login');
                             },
                             child: const Text(
                               'Login',
