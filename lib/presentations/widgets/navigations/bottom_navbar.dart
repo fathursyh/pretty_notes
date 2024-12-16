@@ -33,33 +33,35 @@ class _BottomNavigationBarExampleState extends State<BottomAppCustom> {
           offset: const Offset(0, 3),
         )
       ]),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.black87,
-          items: <BottomNavigationBarItem>[
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              label: 'Search',
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.book),
-              label: 'Tasks',
-            ),
-            BottomNavigationBarItem(
-              icon: const Icon(Icons.person),
-              label: auth.userName,
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: const Color.fromARGB(255, 207, 235, 69),
-          unselectedItemColor: Colors.white60,
-          onTap: _onItemTapped,
+      child: Obx(
+        () => ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.black87,
+            items: <BottomNavigationBarItem>[
+              const BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              const BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                label: 'Search',
+              ),
+              const BottomNavigationBarItem(
+                icon: Icon(Icons.book),
+                label: 'Tasks',
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.person),
+                label: auth.userName.value,
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: const Color.fromARGB(255, 207, 235, 69),
+            unselectedItemColor: Colors.white60,
+            onTap: _onItemTapped,
+          ),
         ),
       ),
     );

@@ -106,17 +106,27 @@ class _RegisterFormState extends State<RegisterForm> {
                           backgroundColor: CustomColors.primary),
                       onPressed: process
                           ? null
-                          : () {
+                          : () async {
                               setState(() {
                                 process = true;
                               });
                               if (_formKey.currentState!.validate()) {
                                 _formKey.currentState!.save();
                                 // register logic
-                                _state.registerUser(
+                                final register = await _state.registerUser(
                                     _registerUser['email']!,
                                     _registerUser['fullname']!,
                                     _registerUser['password']!);
+                                !register
+                                    ? null
+                                    : await _state
+                                        .login(_registerUser['email']!,
+                                            _registerUser['password']!)
+                                        .then(
+                                          (value) => value
+                                              ? Get.offAllNamed('/home')
+                                              : Get.offAllNamed('/landing'),
+                                        );
                               }
                               setState(() {
                                 process = false;

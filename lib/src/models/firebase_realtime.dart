@@ -6,13 +6,14 @@ class FirebaseRealtime {
     await ref.set(data);
   }
 
-  static Future<Object?> readOnce(String doc) async {
+  static Future<Map> readOnce(String doc) async {
     final ref = FirebaseDatabase.instance.ref();
     final snapshot = await ref.child(doc).get();
     if (snapshot.exists) {
-      return snapshot.value;
+      final data = (snapshot.value) as Map;
+      return data;
     } else {
-      return null;
+      return {};
     }
   }
 }

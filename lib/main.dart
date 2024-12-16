@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:pretty_notes/presentations/pages/landing_page.dart';
 import 'package:pretty_notes/src/controllers/auth_controller.dart';
-import 'package:pretty_notes/src/models/firebase_realtime.dart';
 import 'package:pretty_notes/src/setting/page_names.dart';
 import 'src/setting/firebase_options.dart';
 
