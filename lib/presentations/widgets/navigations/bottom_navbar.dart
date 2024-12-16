@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pretty_notes/src/controllers/app_controller.dart';
 import 'package:get/get.dart';
+import 'package:pretty_notes/src/controllers/auth_controller.dart';
 
 class BottomAppCustom extends StatefulWidget {
   const BottomAppCustom({super.key});
@@ -11,6 +12,7 @@ class BottomAppCustom extends StatefulWidget {
 
 class _BottomNavigationBarExampleState extends State<BottomAppCustom> {
   final AppController state = Get.put(AppController());
+  final AuthController auth = Get.find();
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
     state.navigatorIndex(index);
@@ -36,22 +38,22 @@ class _BottomNavigationBarExampleState extends State<BottomAppCustom> {
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.black87,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
+          items: <BottomNavigationBarItem>[
+            const BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Home',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(Icons.search),
               label: 'Search',
             ),
-            BottomNavigationBarItem(
+            const BottomNavigationBarItem(
               icon: Icon(Icons.book),
               label: 'Tasks',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
+              icon: const Icon(Icons.person),
+              label: auth.userName,
             ),
           ],
           currentIndex: _selectedIndex,

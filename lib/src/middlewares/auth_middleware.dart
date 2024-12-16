@@ -5,8 +5,8 @@ import 'package:pretty_notes/src/controllers/auth_controller.dart';
 class AuthMiddleware extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
-    AuthController auth = Get.find();
-    auth.checkLoginStatus();
+    final AuthController auth = Get.find();
+    // redirect to login if user state is log off.
     return auth.isLoggedIn ? null : const RouteSettings(name: '/login');
   }
 }

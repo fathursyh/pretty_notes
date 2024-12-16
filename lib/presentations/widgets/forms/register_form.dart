@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pretty_notes/presentations/layouts/main_layout.dart';
-import 'package:pretty_notes/presentations/pages/login_page.dart';
 import 'package:pretty_notes/src/controllers/auth_controller.dart';
 import 'package:pretty_notes/src/setting/custom_colors.dart';
 
@@ -108,21 +106,17 @@ class _RegisterFormState extends State<RegisterForm> {
                           backgroundColor: CustomColors.primary),
                       onPressed: process
                           ? null
-                          : () async {
+                          : () {
                               setState(() {
                                 process = true;
                               });
-                              // Validate will return true if the form is valid, or false if
-                              // the form is invalid.
                               if (_formKey.currentState!.validate()) {
                                 _formKey.currentState!.save();
-                                final register = await _state.registerUser(
+                                // register logic
+                                _state.registerUser(
                                     _registerUser['email']!,
                                     _registerUser['fullname']!,
                                     _registerUser['password']!);
-                                if (register == true) {
-                                  Get.offAll(() => const MainLayout());
-                                }
                               }
                               setState(() {
                                 process = false;
