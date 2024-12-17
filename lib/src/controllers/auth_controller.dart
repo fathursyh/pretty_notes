@@ -11,10 +11,10 @@ class AuthController extends GetxController {
   var userName = 'User'.obs;
   bool isLoggedIn = false;
 
-  void changeUsername(String value) async {
+  void getUserData(String value) async {
     final data = await FirebaseRealtime.readOnce('users/$value');
     if (data.isNotEmpty) {
-      userName.value = data['fullname'];
+      userName.value = data['fullname'].toString().split(' ')[0];
     }
   }
 

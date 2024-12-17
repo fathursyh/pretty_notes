@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pretty_notes/presentations/widgets/custom/text_appbar.dart';
 import 'package:pretty_notes/presentations/widgets/forms/register_form.dart';
-import 'package:pretty_notes/src/setting/custom_colors.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -11,11 +9,6 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        backgroundColor: CustomColors.primary,
-        centerTitle: true,
-        title: const TextAppbar('Register'),
-      ),
       body: Flex(
         direction: Axis.vertical,
         mainAxisAlignment: MainAxisAlignment.center,

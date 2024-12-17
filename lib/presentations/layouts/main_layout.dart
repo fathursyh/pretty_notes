@@ -38,12 +38,34 @@ class MainLayout extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: CustomColors.primary,
-        title: const Center(child: TextAppbar('Pretty Notes')),
+        toolbarHeight: 76,
+        titleSpacing: 8,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: Image.asset(
+            'assets/flutter_logo.png',
+          ),
+        ),
+        leadingWidth: 50,
+        title: const TextAppbar('Pretty Notes!'),
+        actions: const [
+          Padding(
+            padding: EdgeInsets.only(right: 38),
+            child: Icon(Icons.notifications),
+          ),
+        ],
       ),
       body: Obx(
         () => currentPage(state.navigator),
       ),
       bottomNavigationBar: const BottomAppCustom(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: CustomColors.primary,
+        shape: const CircleBorder(),
+        child: const Icon(Icons.add),
+        onPressed: () {},
+      ),
     );
   }
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pretty_notes/presentations/widgets/custom/text_appbar.dart';
 import 'package:pretty_notes/presentations/widgets/forms/login_form.dart';
-import 'package:pretty_notes/src/setting/custom_colors.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -11,11 +9,6 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        backgroundColor: CustomColors.primary,
-        centerTitle: true,
-        title: const TextAppbar('Login'),
-      ),
       body: Flex(
         direction: Axis.vertical,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -36,7 +29,7 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Create an account to start using our app.',
+                  'Log in to start using our app.',
                   style: GoogleFonts.poppins(
                     fontSize: 14,
                     color: Colors.black87,

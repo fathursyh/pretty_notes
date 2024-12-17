@@ -24,12 +24,12 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // check user state
+  // // check user state
   FirebaseAuth.instance.userChanges().listen((User? user) {
     if (user == null) {
       auth.isLoggedIn = false;
     } else {
-      auth.changeUsername(user.uid);
+      auth.getUserData(user.uid);
       auth.isLoggedIn = true;
     }
   });
@@ -38,7 +38,7 @@ void main() async {
     GetMaterialApp(
       initialRoute: '/splash',
       unknownRoute: GetPage(
-        name: '/login',
+        name: '/landing',
         page: () => const LandingPage(),
       ),
       getPages: pages,
