@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pretty_notes/presentations/pages/home_page.dart';
 import 'package:pretty_notes/presentations/pages/profile_page.dart';
 import 'package:pretty_notes/presentations/pages/search_page.dart';
@@ -64,7 +63,17 @@ class MainLayout extends StatelessWidget {
         backgroundColor: CustomColors.primary,
         shape: const CircleBorder(),
         child: const Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          state.notes.add(
+            {'titles': 'baru', 'descriptions': '19/12/24'},
+          );
+          state.tasks.add(
+            {
+              'titles': 'Tugas Boldson',
+              'descriptions': 'Test software buatan sendiri.'
+            },
+          );
+        },
       ),
     );
   }

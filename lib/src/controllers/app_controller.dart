@@ -10,4 +10,22 @@ class AppController extends GetxController {
     _navigator.value = value;
     update();
   }
+
+  final isNotesShown = true.obs;
+  void showJournal() {
+    isNotesShown.value = !isNotesShown.value;
+  }
+
+  final tasks = [
+    {
+      'titles': 'Tugas Teksim',
+      'descriptions': 'bikin iThink yang banyak.',
+    },
+  ].obs;
+  final notes = [
+    {
+      'titles': 'hey',
+      'descriptions': '2/12/24',
+    }
+  ].obs;
 }
