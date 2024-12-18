@@ -47,7 +47,7 @@ class MainLayout extends StatelessWidget {
           ),
         ),
         leadingWidth: 50,
-        title: const TextAppbar('Pretty Notes!'),
+        title: const TextAppbar('Notes Kami'),
         actions: const [
           Padding(
             padding: EdgeInsets.only(right: 38),
