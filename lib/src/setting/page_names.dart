@@ -23,7 +23,7 @@ var pages = [
   ),
   GetPage(
     name: '/',
-    page: () => const MainLayout(),
+    page: () => MainLayout(),
   ),
   GetPage(
     name: '/login',
@@ -35,7 +35,7 @@ var pages = [
   ),
   GetPage(
     name: '/home',
-    page: () => const MainLayout(),
+    page: () => MainLayout(),
     middlewares: [
       AuthMiddleware(),
     ],

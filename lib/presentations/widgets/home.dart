@@ -24,7 +24,7 @@ class Home extends StatelessWidget {
           ),
           Text(app.fullDate.split(',')[1]),
           const SizedBox(height: 10),
-          HomeContainer(
+          HomeContainer.task(
             app.tasks,
             boxTitle: 'This Week',
             boxColor: CustomColors.primary,
@@ -35,14 +35,24 @@ class Home extends StatelessWidget {
               app.showJournal();
             },
             child: Obx(
-              () => HomeContainer(
+              () => HomeContainer.notes(
                 app.notes,
                 boxTitle: 'Notes',
                 boxColor: Colors.amber,
                 maxHeight: app.isNotesShown.value ? 220 : 90,
               ),
             ),
-          )
+          ),
+          const SizedBox(height: 5),
+          Obx(
+            () => Text(
+              app.isNotesShown.value ? '' : 'double tap to show',
+              style: const TextStyle(
+                color: Colors.black54,
+                fontSize: 16,
+              ),
+            ),
+          ),
         ],
       ),
     );

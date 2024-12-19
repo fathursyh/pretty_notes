@@ -2,14 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pretty_notes/presentations/widgets/custom/custom_container2.dart';
+import 'package:pretty_notes/src/setting/utilities.dart';
+
+enum ContainerType { hasDeadline, noDeadline }
 
 class HomeContainer extends StatelessWidget {
-  const HomeContainer(this.listData,
-      {super.key, this.boxTitle = '', this.boxColor, this.maxHeight = 300});
+  const HomeContainer.task(this.listData,
+      {super.key,
+      this.boxTitle = '',
+      this.boxColor,
+      this.maxHeight = 300,
+      this.type = ContainerType.hasDeadline});
+  const HomeContainer.notes(this.listData,
+      {super.key,
+      this.boxTitle = '',
+      this.boxColor,
+      this.maxHeight = 300,
+      this.type = ContainerType.noDeadline});
   final List listData;
   final String boxTitle;
   final Color? boxColor;
   final double maxHeight;
+  final ContainerType type;
+
   @override
   Widget build(BuildContext context) {
     return CustomContainer2(
@@ -45,7 +60,6 @@ class HomeContainer extends StatelessWidget {
             Flexible(
               child: Obx(
                 () => ListView.builder(
-                  reverse: true,
                   shrinkWrap: true,
                   addAutomaticKeepAlives: true,
                   itemCount: listData.length,
@@ -58,10 +72,40 @@ class HomeContainer extends StatelessWidget {
                             fontSize: 18, fontWeight: FontWeight.w500),
                       ),
                       subtitle: Text('${listData[index]['descriptions']}'),
-                      trailing: const Icon(
-                        Icons.info,
-                        color: Colors.green,
-                      ),
+                      trailing: type == ContainerType.hasDeadline
+                          ? Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  Utilities.daysDifference(
+                                              listData[index]['date']) >
+                                          0
+                                      ? '${Utilities.daysDifference(listData[index]['date'])} days left'
+                                      : 'due',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 12,
+                                      color: Colors.blue,
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FontStyle.italic),
+                                ),
+                                const SizedBox(
+                                  width: 6,
+                                ),
+                                Icon(
+                                  Icons.info,
+                                  color: Utilities.daysDifference(
+                                              listData[index]['date']) <
+                                          3
+                                      ? Colors.red
+                                      : Utilities.daysDifference(
+                                                  listData[index]['date']) <
+                                              5
+                                          ? Colors.orange
+                                          : Colors.green,
+                                ),
+                              ],
+                            )
+                          : null,
                     );
                   },
                 ),
