@@ -22,10 +22,6 @@ var pages = [
     page: () => const LandingPage(),
   ),
   GetPage(
-    name: '/',
-    page: () => MainLayout(),
-  ),
-  GetPage(
     name: '/login',
     page: () => const LoginPage(),
   ),
@@ -35,7 +31,7 @@ var pages = [
   ),
   GetPage(
     name: '/home',
-    page: () => MainLayout(),
+    page: () => const MainLayout(),
     middlewares: [
       AuthMiddleware(),
     ],

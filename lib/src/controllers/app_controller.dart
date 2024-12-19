@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -10,6 +11,16 @@ class AppController extends GetxController {
     _navigator.value = value;
     update();
   }
+
+  final pageState = 1.0.obs;
+
+  void showPage() {
+    pageState.value = 0.0;
+    Timer(const Duration(milliseconds: 80), () {
+      pageState.value = 1.0;
+    });
+  }
+
   // mainApp key
   final scaffoldKey = GlobalKey<ScaffoldState>();
   // DATE

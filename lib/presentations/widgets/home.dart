@@ -22,7 +22,9 @@ class Home extends StatelessWidget {
               fontSize: 20,
             ),
           ),
-          Text(app.fullDate.split(',')[1]),
+          Text(
+            app.fullDate.split(',')[1],
+          ),
           const SizedBox(height: 10),
           HomeContainer.task(
             app.tasks,
@@ -39,7 +41,7 @@ class Home extends StatelessWidget {
                 app.notes,
                 boxTitle: 'Notes',
                 boxColor: Colors.amber,
-                maxHeight: app.isNotesShown.value ? 220 : 90,
+                maxHeight: app.isNotesShown.value ? 220 : 85,
               ),
             ),
           ),

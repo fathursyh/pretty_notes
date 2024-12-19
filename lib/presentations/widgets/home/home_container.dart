@@ -28,11 +28,11 @@ class HomeContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainer2(
-      minHeight: 90,
+      minHeight: 85,
       maxHeight: maxHeight,
       color: boxColor,
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(14.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -69,7 +69,9 @@ class HomeContainer extends StatelessWidget {
                       title: Text(
                         '${listData[index]['titles']}',
                         style: GoogleFonts.poppins(
-                            fontSize: 18, fontWeight: FontWeight.w500),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                       subtitle: Text('${listData[index]['descriptions']}'),
                       trailing: type == ContainerType.hasDeadline

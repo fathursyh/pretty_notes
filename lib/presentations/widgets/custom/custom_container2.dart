@@ -15,6 +15,7 @@ class CustomContainer2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
+        curve: Curves.easeInOut,
         duration: const Duration(milliseconds: 200),
         width: MediaQuery.of(context).size.width / 1.1,
         constraints: BoxConstraints(

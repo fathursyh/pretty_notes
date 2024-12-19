@@ -54,7 +54,7 @@ class _LoginFormState extends State<LoginForm> {
                     hintStyle: TextStyle(color: Colors.black38)),
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
-                    return 'Name is required.';
+                    return 'Password is required.';
                   }
                   return null;
                 },

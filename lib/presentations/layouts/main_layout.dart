@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:pretty_notes/presentations/pages/home_page.dart';
 import 'package:pretty_notes/presentations/pages/profile_page.dart';
@@ -11,31 +12,41 @@ import 'package:get/get.dart';
 import 'package:pretty_notes/src/setting/custom_colors.dart';
 
 class MainLayout extends StatelessWidget {
-  MainLayout({super.key});
-  Widget currentPage(RxInt index) {
-    Widget currentWidget = const HomePage();
-    switch (index.toInt()) {
-      case 0:
-        currentWidget = const HomePage();
-        break;
-      case 1:
-        currentWidget = const SearchPage();
-        break;
-      case 2:
-        currentWidget = const TaskPage();
-        break;
-      case 3:
-        currentWidget = const ProfilePage();
-        break;
-    }
-    return currentWidget;
-  }
+  const MainLayout({super.key});
 
   @override
   Widget build(BuildContext context) {
     final AppController state = Get.put(AppController());
+    Widget currentWidget = const HomePage();
+    Widget currentPage(RxInt index) {
+      switch (index.toInt()) {
+        case 0:
+          Timer(const Duration(milliseconds: 20), () {
+            currentWidget = const HomePage();
+          });
+          break;
+        case 1:
+          Timer(const Duration(milliseconds: 20), () {
+            currentWidget = const SearchPage();
+          });
+          break;
+        case 2:
+          Timer(const Duration(milliseconds: 20), () {
+            currentWidget = const TaskPage();
+          });
+          break;
+        case 3:
+          Timer(const Duration(milliseconds: 20), () {
+            currentWidget = const ProfilePage();
+          });
+          break;
+      }
+      return currentWidget;
+    }
+
     return Scaffold(
       key: state.scaffoldKey,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: CustomColors.primary,
         toolbarHeight: 76,
@@ -57,7 +68,8 @@ class MainLayout extends StatelessWidget {
               },
               icon: const Icon(
                 Icons.notifications,
-                color: Colors.black,
+                color: Colors.black87,
+                size: 26,
               ),
             ),
           ),
@@ -65,7 +77,12 @@ class MainLayout extends StatelessWidget {
       ),
       endDrawer: const NotificationDrawer(),
       body: Obx(
-        () => currentPage(state.navigator),
+        () => AnimatedOpacity(
+          curve: Curves.ease,
+          opacity: state.pageState.value,
+          duration: const Duration(milliseconds: 300),
+          child: currentPage(state.navigator),
+        ),
       ),
       bottomNavigationBar: const BottomAppCustom(),
       floatingActionButtonLocation: FloatingActionButtonLocation.miniEndFloat,

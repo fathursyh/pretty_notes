@@ -14,8 +14,9 @@ class _BottomNavigationBarExampleState extends State<BottomAppCustom> {
   final AppController state = Get.put(AppController());
   final AuthController auth = Get.find();
   int _selectedIndex = 0;
-  void _onItemTapped(int index) {
+  void _onItemTapped(int index) async {
     state.navigatorIndex(index);
+    state.showPage();
     setState(() {
       _selectedIndex = index;
     });
@@ -25,14 +26,17 @@ class _BottomNavigationBarExampleState extends State<BottomAppCustom> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(bottom: 10, left: 6, right: 6),
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.5),
-          spreadRadius: 5,
-          blurRadius: 7,
-          offset: const Offset(0, 3),
-        )
-      ]),
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: const Offset(0, 3),
+          )
+        ],
+      ),
       child: Obx(
         () => ClipRRect(
           borderRadius: BorderRadius.circular(10),

@@ -17,7 +17,10 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -49,24 +52,12 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCJ2i_2NohNbxTV4uW4nY7pQB1xATWfxs8',
-    appId: '1:1097236270475:web:b24ee50fb45c81f5e2b38e',
-    messagingSenderId: '1097236270475',
-    projectId: 'pretty-notes-f6928',
-    databaseURL:
-        "https://pretty-notes-f6928-default-rtdb.asia-southeast1.firebasedatabase.app",
-    authDomain: 'pretty-notes-f6928.firebaseapp.com',
-    storageBucket: 'pretty-notes-f6928.firebasestorage.app',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDf06b5R0fUGqjNkPoV_UgO9HUjHsl4l0Q',
     appId: '1:1097236270475:android:244ac3539447dfbbe2b38e',
     messagingSenderId: '1097236270475',
     projectId: 'pretty-notes-f6928',
-    databaseURL:
-        "https://pretty-notes-f6928-default-rtdb.asia-southeast1.firebasedatabase.app",
+    databaseURL: 'https://pretty-notes-f6928-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'pretty-notes-f6928.firebasestorage.app',
   );
 }
