@@ -17,7 +17,7 @@ class MainLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppController state = Get.put(AppController());
-    Widget currentWidget = const HomePage();
+    Widget currentWidget = const TaskPage();
     Widget currentPage(RxInt index) {
       switch (index.toInt()) {
         case 0:
@@ -46,10 +46,11 @@ class MainLayout extends StatelessWidget {
 
     return Scaffold(
       key: state.scaffoldKey,
+      extendBody: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: CustomColors.primary,
-        toolbarHeight: 76,
+        toolbarHeight: 54,
         titleSpacing: 8,
         leading: Padding(
           padding: const EdgeInsets.only(left: 20),
