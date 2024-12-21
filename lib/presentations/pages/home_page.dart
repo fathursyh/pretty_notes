@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
+      color: Colors.white38,
       widgetChild: Home(),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pretty_notes/presentations/widgets/custom/custom_container.dart';
-import 'package:pretty_notes/presentations/widgets/task.dart';
+import 'package:pretty_notes/presentations/widgets/all_task.dart';
 
 class TaskPage extends StatelessWidget {
   const TaskPage({super.key});
@@ -8,8 +8,8 @@ class TaskPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CustomContainer(
-      color: Colors.blue,
-      widgetChild: Task(),
+      color: Colors.white38,
+      widgetChild: AllTask(),
     );
   }
 }

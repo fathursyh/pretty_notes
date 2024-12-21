@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
               () => HomeContainer.notes(
                 app.notes,
                 boxTitle: 'Notes',
-                boxColor: Colors.amber,
+                boxColor: Colors.yellow.shade400,
                 maxHeight: app.isNotesShown.value ? 220 : 85,
               ),
             ),
