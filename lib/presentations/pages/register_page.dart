@@ -8,6 +8,9 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+      ),
       resizeToAvoidBottomInset: false,
       body: Flex(
         direction: Axis.vertical,

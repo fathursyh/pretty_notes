@@ -15,13 +15,29 @@ class AllTask extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'All Tasks',
-                  style: GoogleFonts.poppins(
-                    color: Colors.black,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                // Text(
+                //   'All Tasks',
+                //   style: GoogleFonts.poppins(
+                //     color: Colors.black,
+                //     fontSize: 18,
+                //     fontWeight: FontWeight.bold,
+                //   ),
+                // ),
+                OutlinedButton.icon(
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
                   ),
+                  onPressed: () {},
+                  label: Text(
+                    'All Tasks',
+                    style: GoogleFonts.poppins(
+                      fontSize: 18,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  icon: const Icon(Icons.arrow_drop_down),
                 ),
                 Row(
                   children: [
@@ -70,7 +86,7 @@ class AllTask extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: 2,
+              itemCount: 5,
               itemBuilder: (context, index) {
                 return ListTile(
                   dense: true,

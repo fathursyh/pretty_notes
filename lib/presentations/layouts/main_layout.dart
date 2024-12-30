@@ -5,8 +5,8 @@ import 'package:pretty_notes/presentations/pages/profile_page.dart';
 import 'package:pretty_notes/presentations/pages/search_page.dart';
 import 'package:pretty_notes/presentations/pages/task_page.dart';
 import 'package:pretty_notes/presentations/widgets/custom/notification_drawer.dart';
-import 'package:pretty_notes/presentations/widgets/custom/text_appbar.dart';
 import 'package:pretty_notes/presentations/widgets/navigations/bottom_navbar.dart';
+import 'package:pretty_notes/presentations/widgets/popup_dialog.dart';
 import 'package:pretty_notes/src/controllers/app_controller.dart';
 import 'package:get/get.dart';
 import 'package:pretty_notes/src/setting/custom_colors.dart';
@@ -17,7 +17,7 @@ class MainLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppController state = Get.put(AppController());
-    Widget currentWidget = const TaskPage();
+    Widget currentWidget = TaskPage();
     Widget currentPage(RxInt index) {
       switch (index.toInt()) {
         case 0:
@@ -49,17 +49,8 @@ class MainLayout extends StatelessWidget {
       extendBody: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: CustomColors.primary,
+        backgroundColor: Colors.white,
         toolbarHeight: 54,
-        titleSpacing: 8,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Image.asset(
-            'assets/flutter_logo.png',
-          ),
-        ),
-        leadingWidth: 50,
-        title: const TextAppbar('Notes Kami'),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 24),
@@ -92,12 +83,9 @@ class MainLayout extends StatelessWidget {
         shape: const CircleBorder(),
         child: const Icon(Icons.add),
         onPressed: () {
-          state.tasks.add(
-            {
-              'titles': 'Tugas Boldson',
-              'descriptions': 'Test software buatan sendiri.',
-              'date': DateTime.utc(2024, 12, 29)
-            },
+          showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => const PopUpDialog(),
           );
         },
       ),

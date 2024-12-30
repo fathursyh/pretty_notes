@@ -65,6 +65,7 @@ class HomeContainer extends StatelessWidget {
                   itemCount: listData.length,
                   itemBuilder: (context, index) {
                     return ListTile(
+                      titleAlignment: ListTileTitleAlignment.center,
                       visualDensity: VisualDensity.compact,
                       isThreeLine: true,
                       dense: true,
