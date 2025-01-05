@@ -15,7 +15,10 @@ class LandingPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/flutter_logo.png'),
+            Image.asset(
+              'assets/logonotes.png',
+              height: 80,
+            ),
             const SizedBox(height: 20),
             Text(
               'Write your notes here',

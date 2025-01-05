@@ -9,11 +9,15 @@ class AuthController extends GetxController {
   final model = UserModel();
   final uuid = const Uuid();
   var userName = 'User'.obs;
+  final fullName = 'User'.obs;
+  final email = 'Email'.obs;
   bool isLoggedIn = false;
 
   void getUserData(String value) async {
     final data = await FirebaseRealtime.readOnce('users/$value');
     if (data.isNotEmpty) {
+      fullName.value = data['fullname'];
+      email.value = data['email'];
       userName.value = data['fullname'].toString().split(' ')[0];
     }
   }

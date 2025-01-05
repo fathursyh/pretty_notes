@@ -17,7 +17,7 @@ class MainLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppController state = Get.put(AppController());
-    Widget currentWidget = TaskPage();
+    Widget currentWidget = const HomePage();
     Widget currentPage(RxInt index) {
       switch (index.toInt()) {
         case 0:
