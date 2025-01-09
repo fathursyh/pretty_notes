@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomSnackbar {
-  CustomSnackbar(title, message, isSuccess) {
+  CustomSnackbar(String title, String message, bool isSuccess) {
     Get.snackbar(
       title,
       message,

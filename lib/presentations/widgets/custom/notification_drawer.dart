@@ -42,7 +42,8 @@ class NotificationDrawer extends StatelessWidget {
             shrinkWrap: true,
             itemCount: 2,
             itemBuilder: (context, index) => ListTile(
-              title: Text('Item $index'),
+              title:
+                  Text('Task "Tugas Mopro keren banget ${index + 1}" is due!'),
               onTap: () {
                 Navigator.of(context).pop();
               },

@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
+import 'package:pretty_notes/presentations/widgets/custom/custom_menu.dart';
 import 'package:pretty_notes/presentations/widgets/custom/two_lines_text.dart';
+import 'package:pretty_notes/src/controllers/app_controller.dart';
 
 class AllTask extends StatelessWidget {
   const AllTask({super.key});
   @override
   Widget build(BuildContext context) {
+    final AppController app = Get.find();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
       child: Column(
@@ -15,14 +20,6 @@ class AllTask extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // Text(
-                //   'All Tasks',
-                //   style: GoogleFonts.poppins(
-                //     color: Colors.black,
-                //     fontSize: 18,
-                //     fontWeight: FontWeight.bold,
-                //   ),
-                // ),
                 OutlinedButton.icon(
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -42,7 +39,7 @@ class AllTask extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      '8',
+                      '${app.tasks.length}',
                       style: GoogleFonts.poppins(
                         color: Colors.black,
                         fontSize: 18,
@@ -79,48 +76,82 @@ class AllTask extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   visualDensity: VisualDensity.compact,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  app.isReversed.value = !app.isReversed.value;
+                },
                 child: const Icon(Icons.sort),
               )
             ],
           ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  dense: true,
-                  isThreeLine: true,
-                  enableFeedback: true,
-                  contentPadding: EdgeInsets.zero,
-                  leading: const Icon(
-                    Icons.info,
-                    color: Colors.green,
-                  ),
-                  title: TwoLinesText(
-                    'judul tugas panjang ini',
-                    style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
+          Flexible(
+            child: Obx(
+              () => ListView.builder(
+                shrinkWrap: true,
+                itemCount: app.tasks.length,
+                reverse: app.isReversed.value,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    onTap: () {
+                      app.updateTask(index, app.tasks[index]['id_task'],
+                          {'isDone': !app.tasks[index]['isDone']});
+                      app.tasks.refresh();
+                    },
+                    onLongPress: () {
+                      showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => CustomMenu(
+                          index: index,
+                          taskId: app.tasks[index]['id_task'],
+                        ),
+                      );
+                    },
+                    dense: true,
+                    isThreeLine: true,
+                    enableFeedback: true,
+                    contentPadding: EdgeInsets.zero,
+                    leading: Icon(
+                      Icons.info,
+                      color: app.tasks[index]['priority'] == 1
+                          ? Colors.green
+                          : app.tasks[index]['priority'] == 2
+                              ? Colors.orange
+                              : Colors.red,
                     ),
-                  ),
-                  titleAlignment: ListTileTitleAlignment.threeLine,
-                  subtitle: TwoLinesText(
-                    'Mengerjakan tugas iThink sistem dinamis haha tapi kalo sepanjang ini gimana liat aja.',
-                    style: TextStyle(
-                      fontSize: 14,
+                    title: TwoLinesText(
+                      '${app.tasks[index]['title']}',
+                      style: GoogleFonts.poppins(
+                        fontSize: 16,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
-                  ),
-                  trailing: Text(
-                    '12/12/24',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.black,
+                    titleAlignment: ListTileTitleAlignment.threeLine,
+                    subtitle: TwoLinesText(
+                      '${app.tasks[index]['desc']}',
+                      style: const TextStyle(
+                        fontSize: 14,
+                      ),
                     ),
-                  ),
-                );
-              },
+                    trailing: !app.tasks[index]['isDone']
+                        ? Text(
+                            (DateFormat('dd/MM/yyyy').format(DateTime.parse(
+                                    app.tasks[index]['deadline'])))
+                                .toString(),
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: Colors.black,
+                            ),
+                          )
+                        : Text(
+                            "Done",
+                            style: GoogleFonts.poppins(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.green),
+                          ),
+                  );
+                },
+              ),
             ),
           ),
         ],

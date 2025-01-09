@@ -4,13 +4,20 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:pretty_notes/presentations/widgets/home/home_container.dart';
 import 'package:pretty_notes/src/controllers/app_controller.dart';
 import 'package:pretty_notes/src/setting/custom_colors.dart';
+import 'package:pretty_notes/src/setting/utilities.dart';
 
 class Home extends StatelessWidget {
-  Home({super.key});
+  Home({super.key}) {
+    app.getWeektasks();
+  }
   final AppController app = Get.find();
+
   @override
   Widget build(BuildContext context) {
-    final AppController app = Get.find();
+    if (!app.isSorted) {
+      app.sortTask();
+    }
+    app.weekTasks.value = Utilities.filterByDeadline(app.weekTasks, 7);
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -27,7 +34,7 @@ class Home extends StatelessWidget {
           ),
           const SizedBox(height: 10),
           HomeContainer.task(
-            app.tasks,
+            app.weekTasks,
             boxTitle: 'This Week',
             boxColor: CustomColors.primary,
           ),

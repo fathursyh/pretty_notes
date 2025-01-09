@@ -71,21 +71,21 @@ class HomeContainer extends StatelessWidget {
                       dense: true,
                       minTileHeight: 10,
                       title: TwoLinesText(
-                        '${listData[index]['titles']}',
+                        '${listData[index]['title']}',
                         style: GoogleFonts.poppins(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       subtitle: TwoLinesText(
-                        '${listData[index]['descriptions']}',
+                        '${listData[index]['desc']}',
                       ),
                       trailing: type == ContainerType.hasDeadline
                           ? Text(
                               Utilities.daysDifference(
-                                          listData[index]['date']) >
+                                          listData[index]['deadline']) >
                                       0
-                                  ? '${Utilities.daysDifference(listData[index]['date'])} days left'
+                                  ? '${Utilities.daysDifference(listData[index]['deadline'])} days left'
                                   : 'due',
                               style: GoogleFonts.poppins(
                                   fontSize: 12,

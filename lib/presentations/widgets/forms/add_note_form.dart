@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pretty_notes/src/controllers/app_controller.dart';
 import 'package:pretty_notes/src/setting/custom_colors.dart';
 
 class AddNoteForm extends StatefulWidget {
@@ -11,7 +12,11 @@ class AddNoteForm extends StatefulWidget {
 }
 
 class _AddNoteFormState extends State<AddNoteForm> {
+  String _title = '';
+  String _desc = '';
+  final AppController state = Get.find();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,7 +52,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 }
                 return null;
               },
-              onSaved: (value) {},
+              onSaved: (value) {
+                _title = value!;
+              },
             ),
             const SizedBox(height: 14),
             TextFormField(
@@ -65,7 +72,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 hintStyle: TextStyle(color: Colors.black38),
               ),
               validator: null,
-              onSaved: (value) {},
+              onSaved: (value) {
+                _desc = value!;
+              },
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 32.0),
@@ -78,7 +87,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
                         padding: const EdgeInsets.symmetric(
                             vertical: 14, horizontal: 38),
                         backgroundColor: CustomColors.primary),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                        // state.newNote(_title, _desc);
+                      }
+                    },
                     child: Text(
                       'Add',
                       style: GoogleFonts.poppins(

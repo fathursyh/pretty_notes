@@ -14,6 +14,7 @@ class AddPage extends StatelessWidget {
         title: const Text('New Entry'),
         backgroundColor: CustomColors.primary,
       ),
+      resizeToAvoidBottomInset: false,
       body: isTask == true ? const AddTaskForm() : const AddNoteForm(),
     );
   }

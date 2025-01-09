@@ -8,7 +8,7 @@ class PopUpDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      insetPadding: EdgeInsets.all(0),
+      insetPadding: const EdgeInsets.all(0),
       elevation: 10,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
@@ -21,10 +21,10 @@ class PopUpDialog extends StatelessWidget {
             onPressed: () {
               Get.back();
               Get.to(
-                () => AddPage.task(),
+                () => const AddPage.task(),
               );
             },
-            child: Text(
+            child: const Text(
               'Tasks',
               style: TextStyle(fontSize: 18),
             ),
@@ -32,9 +32,9 @@ class PopUpDialog extends StatelessWidget {
           TextButton(
             onPressed: () {
               Get.back();
-              Get.to(() => AddPage.note());
+              Get.to(() => const AddPage.note());
             },
-            child: Text(
+            child: const Text(
               'Notes',
               style: TextStyle(fontSize: 18),
             ),

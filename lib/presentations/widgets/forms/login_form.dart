@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pretty_notes/presentations/widgets/custom/custom_snackbar.dart';
 import 'package:pretty_notes/src/controllers/auth_controller.dart';
+import 'package:pretty_notes/src/models/tasks_model.dart';
 import 'package:pretty_notes/src/setting/custom_colors.dart';
 
 class LoginForm extends StatefulWidget {
@@ -87,7 +89,12 @@ class _LoginFormState extends State<LoginForm> {
                                   _loginUser['password']!,
                                 );
                                 if (login == true) {
+                                  CustomSnackbar(
+                                      'Login', 'Login berhasil!', true);
                                   Get.offAllNamed('/home');
+                                } else {
+                                  CustomSnackbar(
+                                      'Login', 'Login gagal!', false);
                                 }
                               }
                               setState(() {

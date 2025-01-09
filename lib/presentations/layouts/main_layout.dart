@@ -16,32 +16,35 @@ class MainLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppController state = Get.put(AppController());
-    Widget currentWidget = const HomePage();
+    final AppController state = Get.find();
+    if (state.randomData != null) {
+      (state.randomData as Map).forEach((key, value) => state.tasks.add(value));
+      state.randomData = null;
+    }
     Widget currentPage(RxInt index) {
       switch (index.toInt()) {
         case 0:
           Timer(const Duration(milliseconds: 20), () {
-            currentWidget = const HomePage();
+            state.currentWidget = const HomePage();
           });
           break;
         case 1:
           Timer(const Duration(milliseconds: 20), () {
-            currentWidget = const SearchPage();
+            state.currentWidget = const SearchPage();
           });
           break;
         case 2:
           Timer(const Duration(milliseconds: 20), () {
-            currentWidget = const TaskPage();
+            state.currentWidget = const TaskPage();
           });
           break;
         case 3:
           Timer(const Duration(milliseconds: 20), () {
-            currentWidget = const ProfilePage();
+            state.currentWidget = const ProfilePage();
           });
           break;
       }
-      return currentWidget;
+      return state.currentWidget;
     }
 
     return Scaffold(

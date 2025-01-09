@@ -1,9 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:pretty_notes/presentations/widgets/custom/custom_snackbar.dart';
+import 'package:pretty_notes/src/controllers/app_controller.dart';
 import 'package:pretty_notes/src/models/firebase_realtime.dart';
 import 'package:pretty_notes/src/models/user_model.dart';
 import 'package:uuid/uuid.dart';
+
+final AppController app = Get.find();
 
 class AuthController extends GetxController {
   final model = UserModel();
@@ -11,14 +14,17 @@ class AuthController extends GetxController {
   var userName = 'User'.obs;
   final fullName = 'User'.obs;
   final email = 'Email'.obs;
+  final id = ''.obs;
   bool isLoggedIn = false;
 
   void getUserData(String value) async {
     final data = await FirebaseRealtime.readOnce('users/$value');
     if (data.isNotEmpty) {
+      id.value = data['id'];
       fullName.value = data['fullname'];
       email.value = data['email'];
       userName.value = data['fullname'].toString().split(' ')[0];
+      app.randomData = data['tasks'];
     }
   }
 
@@ -31,6 +37,7 @@ class AuthController extends GetxController {
         if (user != null) {
           final String id = user.uid;
           FirebaseRealtime.write("users/$id", {
+            "id": id,
             "email": emailAddress,
             "fullname": fullname,
           });
