@@ -59,7 +59,13 @@ class AuthController extends GetxController {
 
   // Logout
   void logoutUser() {
+    app.navigatorIndex(0);
+    app.tasks.length = 0;
+    app.notes.length = 0;
+    app.randomData = {};
+    isLoggedIn = false;
     model.logoutUser();
     Get.offAllNamed('/landing');
+    CustomSnackbar('Logout', 'User has logout.', true);
   }
 }

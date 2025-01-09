@@ -71,10 +71,12 @@ class AppController extends GetxController {
     }
   }
 
-  void updateTask(int index, String id, Map<String, Object> data) async {
+  void updateTask(int index, String id, Map<String, dynamic> data) async {
     final task = FirebaseDatabase.instance.ref('users/${auth.id}/tasks/$id');
     task.update(data);
     data.forEach((key, value) => tasks[index][key] = value);
+    tasks.refresh();
+    CustomSnackbar('Tasks', 'Tasks has been updated!', true);
     getWeektasks();
   }
 

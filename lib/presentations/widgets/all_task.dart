@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:pretty_notes/presentations/widgets/custom/custom_menu.dart';
+import 'package:pretty_notes/presentations/widgets/custom/custom_snackbar.dart';
 import 'package:pretty_notes/presentations/widgets/custom/two_lines_text.dart';
 import 'package:pretty_notes/src/controllers/app_controller.dart';
 
@@ -94,7 +95,6 @@ class AllTask extends StatelessWidget {
                     onTap: () {
                       app.updateTask(index, app.tasks[index]['id_task'],
                           {'isDone': !app.tasks[index]['isDone']});
-                      app.tasks.refresh();
                     },
                     onLongPress: () {
                       showDialog<String>(

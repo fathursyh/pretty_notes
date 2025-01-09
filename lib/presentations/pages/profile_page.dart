@@ -44,6 +44,30 @@ class ProfilePage extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
           Text('Notes (${app.notes.length})'),
+          const SizedBox(
+            height: 38,
+          ),
+          Center(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 14, horizontal: 38),
+              ),
+              onPressed: () {
+                user.logoutUser();
+              },
+              child: Text(
+                'Logout',
+                style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: Colors.red,
+                    fontWeight: FontWeight.w600),
+              ),
+            ),
+          ),
         ],
       ),
     );

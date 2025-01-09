@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pretty_notes/presentations/pages/edit_page.dart';
 import 'package:pretty_notes/src/controllers/app_controller.dart';
 
 class CustomMenu extends StatelessWidget {
@@ -27,6 +28,12 @@ class CustomMenu extends StatelessWidget {
         children: [
           const PopupMenuDivider(),
           PopupMenuItem(
+            onTap: () {
+              Get.to(() => EditPage.task(
+                    index: index,
+                    taskId: taskId,
+                  ));
+            },
             child: Center(
               child: Text(
                 'Edit',
